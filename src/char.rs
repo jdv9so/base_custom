@@ -58,6 +58,19 @@ impl BaseCustom<char> {
     };
     format!("{}", result)
   }
+  
+    pub fn gen_into(&self, input_val: u64, in: &mut String) {
+    if input_val == 0 {
+      in.insert(0, self.primitives[0]);
+      return;
+    }
+    let mut number = input_val;
+    loop {
+      if number == 0 { break };
+      in.insert(0, self.primitives[(number % self.base) as usize]);
+      number = number/self.base;
+    };
+  }
 
   /// `char` returns a char straight from the character mapping.
   /// decimal value must be within character range for a Some result.
