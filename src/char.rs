@@ -116,6 +116,12 @@ impl BaseCustom<char> {
       sum + (self.primitives_hash[&chr] as u64) * self.base.pow(i as u32)
     )
   }
+  
+    pub fn decimal_str(&self, input_val: &str) -> u64 {
+    input_val.chars().rev().enumerate().fold(0, |sum, (i, chr)|
+      sum + (self.primitives_hash[&chr] as u64) * self.base.pow(i as u32)
+    )
+  }
 
   /// Returns the zero value of your custom base
   pub fn zero(&self) -> &char {
