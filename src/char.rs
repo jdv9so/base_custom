@@ -59,15 +59,15 @@ impl BaseCustom<char> {
     format!("{}", result)
   }
   
-    pub fn gen_into(&self, input_val: u64, in: &mut String) {
+    pub fn gen_into(&self, input_val: u64, into: &mut String) {
     if input_val == 0 {
-      in.insert(0, self.primitives[0]);
+      into.insert(0, self.primitives[0]);
       return;
     }
     let mut number = input_val;
     loop {
       if number == 0 { break };
-      in.insert(0, self.primitives[(number % self.base) as usize]);
+      into.insert(0, self.primitives[(number % self.base) as usize]);
       number = number/self.base;
     };
   }
